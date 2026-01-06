@@ -1,0 +1,40 @@
+2025. 01. 06  과제물 
+
+아래를 기반으로 해서 curcor에 붙여 넣을 마크다운형식의 프롬프트를 작성해 주세요
+
+1. HTML,CSS,Javascript 사용해서 포트폴리오 웹사이트를 만들어줘. 만들어야 할 웹사이트는 "화분웹사이트"입니다.  스타일링은 Tailwind CSS를 사용해줘.
+
+2. 포토폴리오 웹사이트이므로 샘플하면서도 세련되게 만들어줘
+
+3. HTML, CSS, JavaScript 파일은 분리해줘
+
+4. 데스크톱과 모바일 모두에서 잘 보이는 반응형 로그인 페이지를 만들어줘.
+모바일에서는 버튼 크기를 크게 하고, 터치하기 쉽게 만들어줘.
+터치 친화적인 버튼 크기 (최소 44px), 가로/세로 화면 회전 대응, 모바일 키보드 고려한 레이아웃, 빠른 로딩 속도 등을 고려해 주세요
+
+5. 참고 할 만한 웹페이지는 아래와 같습니다.( 다만, 레이아웃/사용성 느낌만 참고, 그대로 복붙 금지)
+https://greenpot.kr/index.php
+
+
+------------------------------------------------------------------
+
+https://greenpot.kr/index.php를 참고해서 전체적인 분위기와 느낌을 수정해 주세요! 
+모든 페이지에서 그린포트는 누나네 화분가게로 변경해 주세요
+
+로그 이미지를 누나네 화분가게에 맞게 수정해주세요
+
+------------------------------------------------------------------
+지금까지 짠 코드를 전부 깃허브 리파지토리에 올려줘 
+
+echo "# vibe-coding-portfolio" >> README.md 
+git init 
+git add README.md 
+git commit -m "first commit" 
+git branch -M main 
+git remote add origin https://github.com/thesunkr/vibe-coding-portfolio.git
+ git push -u origin main
+--------------------------------------------------------------
+
+Here is your GitHub sudo authentication code:
+
+92814196

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="누나네 화분가게 로그인 - 건강한 식물과 예쁜 화분을 만나보세요.">
+    <meta name="theme-color" content="#5D4E37">
+    <title>로그인 | 누나네 화분가게</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm': {
+                            50: '#faf7f2',
+                            100: '#f5ede0',
+                            200: '#e9d8be',
+                            300: '#dcc298',
+                            400: '#cda76e',
+                            500: '#c49452',
+                            600: '#b67d42',
+                            700: '#976438',
+                            800: '#7b5133',
+                            900: '#65442c',
+                        },
+                        'leaf': {
+                            50: '#f4f9f4',
+                            100: '#e5f2e7',
+                            200: '#cce5d0',
+                            300: '#a3d0ac',
+                            400: '#72b37f',
+                            500: '#4f965e',
+                            600: '#3c7a4a',
+                            700: '#32613d',
+                            800: '#2b4e34',
+                            900: '#25412d',
+                        },
+                        'cream': {
+                            50: '#fffef9',
+                            100: '#fefcf3',
+                            200: '#fdf8e7',
+                            300: '#f9f0d4',
+                            400: '#f3e4b8',
+                            500: '#e9d49a',
+                        },
+                        'pot': {
+                            400: '#c77852',
+                            500: '#b8633d',
+                            600: '#9a4f30',
+                        }
+                    },
+                    fontFamily: {
+                        'korean': ['Noto Sans KR', 'Pretendard', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-korean bg-cream-50 text-gray-800 antialiased min-h-screen min-h-[100dvh]">
+    
+    <div class="min-h-screen min-h-[100dvh] flex flex-col lg:flex-row">
+        
+        <!-- Left Side - Branding (Hidden on mobile, visible on large screens) -->
+        <div class="hidden lg:flex lg:w-1/2 xl:w-[55%] bg-gradient-to-br from-leaf-600 via-leaf-700 to-warm-800 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 right-20 w-72 h-72 bg-pot-400 rounded-full blur-3xl"></div>
+            </div>
+            
+            <!-- Decorative Plants -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-2/3 max-w-md opacity-20" viewBox="0 0 200 300" fill="none">
+                    <!-- Large Plant Silhouette -->
+                    <path d="M100 280 L100 150" stroke="white" stroke-width="8" fill="none"/>
+                    <path d="M100 200 Q40 180 20 120 Q70 160 100 200" fill="white"/>
+                    <path d="M100 180 Q160 160 190 100 Q140 150 100 180" fill="white"/>
+                    <path d="M100 160 Q50 130 40 60 Q80 120 100 160" fill="white"/>
+                    <path d="M100 140 Q150 110 170 40 Q120 100 100 140" fill="white"/>
+                    <path d="M100 120 Q60 80 70 20 Q100 70 100 120" fill="white"/>
+                    <ellipse cx="100" cy="290" rx="40" ry="10" fill="white"/>
+                </svg>
+            </div>
+            
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col justify-between p-12 xl:p-16 text-white w-full">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+                        <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none">
+                            <path d="M12 24 L14 34 L26 34 L28 24 Z" fill="#c77852"/>
+                            <ellipse cx="20" cy="24" rx="9" ry="2.5" fill="#9a4f30"/>
+                            <ellipse cx="20" cy="24" rx="7" ry="1.5" fill="#5a3d2b"/>
+                            <path d="M20 23 Q19 16 20 10" stroke="#3c7a4a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M20 18 Q14 15 12 10 Q17 14 20 18" fill="#3c7a4a"/>
+                            <path d="M20 14 Q26 11 29 6 Q24 12 20 14" fill="#4f965e"/>
+                            <path d="M20 20 Q13 19 10 15 Q15 19 20 20" fill="#4f965e" opacity="0.8"/>
+                            <path d="M20 8 Q17 5 20 2 Q23 5 20 8" fill="#ff6b6b" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold leading-tight">누나네</span>
+                        <span class="text-sm text-leaf-200 leading-tight font-medium">화분가게</span>
+                    </div>
+                </a>
+                
+                <!-- Main Text -->
+                <div class="space-y-6">
+                    <h1 class="text-4xl xl:text-5xl font-bold leading-tight">
+                        건강한 식물로<br>
+                        행복한 공간을<br>
+                        만들어보세요
+                    </h1>
+                    <p class="text-leaf-200 text-lg max-w-md">
+                        5,000명 이상의 단골 손님이 선택한 누나네 화분가게. 
+                        회원가입하고 특별한 혜택을 받아보세요.
+                    </p>
+                </div>
+                
+                <!-- Testimonial -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-md border border-white/20">
+                    <div class="flex gap-1 mb-3">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-leaf-100 mb-4">
+                        "집 안 분위기가 완전히 달라졌어요. 누나가 알려준 관리법 덕분에 식물이 잘 자라요!"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-leaf-500 rounded-full flex items-center justify-center">
+                            <span class="font-bold">김</span>
+                        </div>
+                        <div>
+                            <div class="font-medium">김서연</div>
+                            <div class="text-sm text-leaf-200">단골 손님</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Login Form -->
+        <div class="flex-1 flex flex-col min-h-screen min-h-[100dvh] lg:min-h-0">
+            
+            <!-- Mobile Header -->
+            <header class="lg:hidden bg-leaf-600 text-white px-4 py-4 safe-area-top">
+                <div class="flex items-center justify-between">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-md">
+                            <svg class="w-6 h-6" viewBox="0 0 40 40" fill="none">
+                                <path d="M12 24 L14 34 L26 34 L28 24 Z" fill="#c77852"/>
+                                <ellipse cx="20" cy="24" rx="9" ry="2.5" fill="#9a4f30"/>
+                                <ellipse cx="20" cy="24" rx="7" ry="1.5" fill="#5a3d2b"/>
+                                <path d="M20 23 Q19 16 20 10" stroke="#3c7a4a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                <path d="M20 18 Q14 15 12 10 Q17 14 20 18" fill="#3c7a4a"/>
+                                <path d="M20 14 Q26 11 29 6 Q24 12 20 14" fill="#4f965e"/>
+                                <path d="M20 20 Q13 19 10 15 Q15 19 20 20" fill="#4f965e" opacity="0.8"/>
+                                <path d="M20 8 Q17 5 20 2 Q23 5 20 8" fill="#ff6b6b" opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-bold leading-tight">누나네</span>
+                            <span class="text-xs text-leaf-200 leading-tight font-medium">화분가게</span>
+                        </div>
+                    </a>
+                    <a href="index.html" class="touch-btn w-11 h-11 flex items-center justify-center rounded-lg hover:bg-leaf-500 transition-colors" aria-label="홈으로">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </a>
+                </div>
+            </header>
+            
+            <!-- Form Container -->
+            <div class="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-12 overflow-y-auto">
+                <div class="w-full max-w-md space-y-8">
+                    
+                    <!-- Desktop Back Link -->
+                    <a href="index.html" class="hidden lg:inline-flex items-center gap-2 text-leaf-600 hover:text-leaf-700 font-medium transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        </svg>
+                        홈으로 돌아가기
+                    </a>
+                    
+                    <!-- Header -->
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-warm-900 mb-2">로그인</h2>
+                        <p class="text-gray-600">계정에 로그인하고 특별한 혜택을 받아보세요</p>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <form id="login-form" class="space-y-5" novalidate>
+                        <!-- Email Field -->
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-warm-900 mb-2">이메일</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </span>
+                                <input 
+                                    type="email" 
+                                    id="login-email" 
+                                    name="email" 
+                                    required
+                                    autocomplete="email"
+                                    inputmode="email"
+                                    class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:border-leaf-500 focus:ring-2 focus:ring-leaf-500/20 outline-none transition-all text-base touch-input"
+                                    placeholder="example@email.com">
+                            </div>
+                            <p class="hidden text-red-500 text-sm mt-1" id="email-error">올바른 이메일 주소를 입력해주세요.</p>
+                        </div>
+                        
+                        <!-- Password Field -->
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-warm-900 mb-2">비밀번호</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    </svg>
+                                </span>
+                                <input 
+                                    type="password" 
+                                    id="login-password" 
+                                    name="password" 
+                                    required
+                                    autocomplete="current-password"
+                                    class="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-200 focus:border-leaf-500 focus:ring-2 focus:ring-leaf-500/20 outline-none transition-all text-base touch-input"
+                                    placeholder="비밀번호를 입력하세요">
+                                <button 
+                                    type="button" 
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors touch-btn"
+                                    id="toggle-password"
+                                    aria-label="비밀번호 표시">
+                                    <svg class="w-5 h-5 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="hidden text-red-500 text-sm mt-1" id="password-error">비밀번호를 입력해주세요.</p>
+                        </div>
+                        
+                        <!-- Remember & Forgot -->
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <label class="flex items-center gap-3 cursor-pointer select-none">
+                                <input type="checkbox" name="remember" class="w-5 h-5 rounded border-gray-300 text-leaf-600 focus:ring-leaf-500 cursor-pointer">
+                                <span class="text-sm text-gray-600">로그인 상태 유지</span>
+                            </label>
+                            <a href="#" class="text-sm text-leaf-600 hover:text-leaf-700 font-medium transition-colors">비밀번호 찾기</a>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit" 
+                            class="touch-btn w-full bg-leaf-600 hover:bg-leaf-700 active:bg-leaf-800 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg focus:ring-4 focus:ring-leaf-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                            id="login-submit">
+                            <span class="btn-text">로그인</span>
+                            <span class="btn-loading hidden">
+                                <svg class="animate-spin w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </form>
+                    
+                    <!-- Divider -->
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-200"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-4 bg-cream-50 text-gray-500">또는</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Login -->
+                    <div class="space-y-3">
+                        <button type="button" class="touch-btn w-full flex items-center justify-center gap-3 bg-[#FEE500] hover:bg-[#FDD800] text-[#3C1E1E] py-4 rounded-xl font-medium transition-all">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3c-5.523 0-10 3.582-10 8 0 2.793 1.838 5.24 4.588 6.616-.186.702-.694 2.542-.795 2.936-.124.485.178.479.374.349.155-.103 2.466-1.677 3.466-2.359.762.114 1.55.175 2.367.175 5.523 0 10-3.582 10-8s-4.477-8-10-8z"/>
+                            </svg>
+                            카카오로 시작하기
+                        </button>
+                        
+                        <button type="button" class="touch-btn w-full flex items-center justify-center gap-3 bg-[#03C75A] hover:bg-[#02B350] text-white py-4 rounded-xl font-medium transition-all">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
+                            </svg>
+                            네이버로 시작하기
+                        </button>
+                        
+                        <button type="button" class="touch-btn w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-700 py-4 rounded-xl font-medium border border-gray-200 transition-all">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            Google로 시작하기
+                        </button>
+                    </div>
+                    
+                    <!-- Sign Up Link -->
+                    <p class="text-center text-gray-600">
+                        아직 회원이 아니신가요?
+                        <a href="#" class="text-leaf-600 hover:text-leaf-700 font-semibold transition-colors ml-1">회원가입</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="text-center py-4 px-4 text-sm text-gray-500 border-t border-gray-100 safe-area-bottom">
+                <p>&copy; 2024 누나네 화분가게. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

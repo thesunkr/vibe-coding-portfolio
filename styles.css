@@ -1,0 +1,693 @@
+/* ===================================
+   누나네 화분가게 CSS Styles
+   화분 웹사이트 포트폴리오
+   =================================== */
+
+/* ===== CSS Variables ===== */
+:root {
+    --warm-50: #faf7f2;
+    --warm-100: #f5ede0;
+    --warm-200: #e9d8be;
+    --warm-300: #dcc298;
+    --warm-400: #cda76e;
+    --warm-500: #c49452;
+    --warm-600: #b67d42;
+    --warm-700: #976438;
+    --warm-800: #7b5133;
+    --warm-900: #65442c;
+    
+    --leaf-50: #f4f9f4;
+    --leaf-100: #e5f2e7;
+    --leaf-200: #cce5d0;
+    --leaf-300: #a3d0ac;
+    --leaf-400: #72b37f;
+    --leaf-500: #4f965e;
+    --leaf-600: #3c7a4a;
+    --leaf-700: #32613d;
+    --leaf-800: #2b4e34;
+    --leaf-900: #25412d;
+    
+    --cream-50: #fffef9;
+    --cream-100: #fefcf3;
+    --cream-200: #fdf8e7;
+    --cream-300: #f9f0d4;
+    --cream-400: #f3e4b8;
+    --cream-500: #e9d49a;
+    
+    --pot-400: #c77852;
+    --pot-500: #b8633d;
+    --pot-600: #9a4f30;
+    
+    /* Animation timing */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+}
+
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Mobile viewport fix */
+@supports (min-height: 100dvh) {
+    .min-h-screen {
+        min-height: 100dvh;
+    }
+}
+
+/* ===== Touch-friendly Styles ===== */
+.touch-btn {
+    min-height: 44px;
+    min-width: 44px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.touch-input {
+    min-height: 48px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* ===== Safe Area for Notched Devices ===== */
+.safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ===== Navigation Styles ===== */
+#navbar {
+    transition: all var(--transition-normal) ease;
+}
+
+#navbar.scrolled {
+    background-color: rgba(255, 254, 249, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+#navbar.scrolled .nav-logo-text {
+    color: var(--warm-800);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--leaf-500);
+    transition: width var(--transition-normal) ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal) ease-out;
+}
+
+#mobile-menu.open {
+    max-height: 400px;
+}
+
+.mobile-nav-link {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all var(--transition-normal) ease;
+}
+
+#mobile-menu.open .mobile-nav-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#mobile-menu.open .mobile-nav-link:nth-child(1) { transition-delay: 50ms; }
+#mobile-menu.open .mobile-nav-link:nth-child(2) { transition-delay: 100ms; }
+#mobile-menu.open .mobile-nav-link:nth-child(3) { transition-delay: 150ms; }
+#mobile-menu.open .mobile-nav-link:nth-child(4) { transition-delay: 200ms; }
+#mobile-menu.open .mobile-nav-link:nth-child(5) { transition-delay: 250ms; }
+
+/* ===== Animation Classes ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bounceSlow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+    animation: bounceSlow 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Product Card Styles ===== */
+.product-card {
+    transition: all var(--transition-normal) ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card:hover .aspect-square svg {
+    transform: scale(1.05);
+    transition: transform var(--transition-normal) ease;
+}
+
+/* ===== Category Button Styles ===== */
+.category-btn {
+    background-color: var(--cream-200);
+    color: var(--warm-700);
+    border: 2px solid transparent;
+    transition: all var(--transition-normal) ease;
+}
+
+.category-btn:hover {
+    background-color: var(--leaf-100);
+    border-color: var(--leaf-200);
+}
+
+.category-btn.active {
+    background-color: var(--leaf-600);
+    color: white;
+}
+
+/* ===== Form Styles ===== */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+/* Input placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Custom checkbox */
+input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--leaf-600);
+}
+
+/* Form validation states */
+input.error,
+textarea.error {
+    border-color: #ef4444;
+}
+
+input.success,
+textarea.success {
+    border-color: var(--leaf-500);
+}
+
+/* ===== Button States ===== */
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* ===== Loading States ===== */
+.btn-loading svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== Responsive Utilities ===== */
+/* Mobile-first approach */
+
+/* Extra small devices (phones, 320px and up) */
+@media (min-width: 320px) {
+    .touch-btn {
+        min-height: 48px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .touch-btn {
+        min-height: 44px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .touch-btn {
+        min-height: 40px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .touch-btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* ===== Landscape Orientation Fixes ===== */
+@media (orientation: landscape) and (max-height: 500px) {
+    .min-h-screen {
+        min-height: auto;
+    }
+    
+    /* Adjust hero section in landscape */
+    #home {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+    
+    /* Adjust login form in landscape */
+    #login-form {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/* ===== Keyboard Visibility Adjustments ===== */
+/* When keyboard is visible, adjust form positioning */
+@media (max-height: 600px) {
+    .form-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    /* Hide non-essential elements when keyboard is open */
+    .keyboard-hide {
+        display: none;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    nav,
+    footer,
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .animate-float,
+    .animate-bounce-slow,
+    .animate-pulse {
+        animation: none;
+    }
+}
+
+/* ===== Selection Styles ===== */
+::selection {
+    background-color: var(--leaf-200);
+    color: var(--leaf-800);
+}
+
+::-moz-selection {
+    background-color: var(--leaf-200);
+    color: var(--leaf-800);
+}
+
+/* ===== Scrollbar Styles ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--warm-300);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--warm-400);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--warm-300) var(--cream-100);
+}
+
+/* ===== Focus Visible Styles ===== */
+:focus-visible {
+    outline: 2px solid var(--leaf-500);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--leaf-500);
+    outline-offset: 2px;
+}
+
+/* ===== Skip Link for Accessibility ===== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--leaf-600);
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top var(--transition-fast) ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===== Toast/Notification Styles ===== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--warm-700);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0;
+    transition: all var(--transition-normal) ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast.success {
+    background: var(--leaf-600);
+}
+
+.toast.error {
+    background: #dc2626;
+}
+
+/* ===== Modal Styles ===== */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal) ease;
+}
+
+.modal-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: all var(--transition-normal) ease;
+}
+
+.modal-backdrop.show .modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* ===== Image Lazy Loading Placeholder ===== */
+.img-placeholder {
+    background: linear-gradient(90deg, var(--cream-100) 25%, var(--cream-200) 50%, var(--cream-100) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+    background: linear-gradient(135deg, var(--leaf-600), var(--leaf-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== Glass Effect ===== */
+.glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Hover Card Effect ===== */
+.hover-card {
+    transition: all var(--transition-normal) ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Mobile Optimization ===== */
+@media (max-width: 767px) {
+    /* Larger touch targets on mobile */
+    .touch-btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* Better readability on small screens */
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    /* Full-width buttons on mobile */
+    .mobile-full-width {
+        width: 100%;
+    }
+    
+    /* Adjust spacing on mobile */
+    section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    
+    /* Hide decorative elements on very small screens */
+    @media (max-width: 374px) {
+        .decorative-element {
+            display: none;
+        }
+    }
+}
+
+/* ===== High DPI Display Support ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Sharper borders on retina displays */
+    .product-card,
+    .category-btn,
+    input,
+    textarea {
+        border-width: 0.5px;
+    }
+}
+
+/* ===== Performance Optimizations ===== */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ===== Custom Warm Theme Additions ===== */
+
+/* Warm background patterns */
+.pattern-dots {
+    background-image: radial-gradient(var(--warm-200) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.pattern-lines {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        var(--cream-200) 10px,
+        var(--cream-200) 20px
+    );
+}
+
+/* Soft shadows for warm theme */
+.shadow-warm {
+    box-shadow: 0 4px 20px rgba(182, 125, 66, 0.15);
+}
+
+.shadow-warm-lg {
+    box-shadow: 0 10px 40px rgba(182, 125, 66, 0.2);
+}
+
+/* Border styles */
+.border-warm-soft {
+    border: 1px solid var(--cream-200);
+}
+
+/* Text styles */
+.text-warm-gradient {
+    background: linear-gradient(135deg, var(--warm-600), var(--pot-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Button hover glow effect */
+.btn-glow:hover {
+    box-shadow: 0 0 20px rgba(79, 150, 94, 0.4);
+}
+
+/* Card hover lift effect */
+.card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
